@@ -1,0 +1,20 @@
+---
+# this playbook drops a public ssh key into authorized keys and performs
+# minimal setup for ssh-ing into a remote
+#
+# place your public key in the same directory as id_rsa.pub
+
+- name: Deploy ssh key to authorized_keys
+  become: yes
+  collections: ['ansible.posix']
+  hosts: all
+  vars:
+    user: susie
+    homedir: /home/susie
+    keydir: /home/coffee/.ssh
+  tasks:
+    - name: deploy key
+      ansible.posix.authorized_key:
+        user: "{{ user }}" 
+        state: present
+        key: "{{ lookup('file', '{{ keydir }}/id_rsa.pub') }}"
