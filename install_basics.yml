@@ -2,6 +2,9 @@
 # Set up a sane and kind dev environment.
 # installs common tools
 # remaps caps to ctrl
+
+# as always, change instances of <user> to the target username
+
 - name: Install basics
   hosts: all
   become: <user>
