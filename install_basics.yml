@@ -1,0 +1,60 @@
+---
+# Set up a sane and kind dev environment.
+# installs common tools
+# remaps caps to ctrl
+- name: Install basics
+  hosts: all
+  become: <user>
+  vars:
+    user: <user>
+    homedir: /home/<user>  # set me to target user's home dir 
+  tasks:
+    - name: Install tools with apt
+      apt:
+        pkg:
+          - wireshark
+          - python3.8-dev
+          - build-essential
+          - sqlite3
+          - tmux
+          - vim
+          - git
+          - python3
+          - zsh
+          - curl
+          - jq
+          - tree
+          - clang
+          - libssl-dev
+          - meson
+          - gnome-tweaks
+          - lld
+        update_cache: yes
+        become: yes
+        state: present
+
+    - name: create sources directory if it doesn't exist
+      file:
+        path: {{homedir}}/.sources
+        state: directory
+        mode: '0755'
+
+    - name: Retrieve Oh My Zsh
+      get_url:
+         url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+         dest: {{homedir}}/.sources/omzsh_install.sh
+         mode: '0755'
+
+    - name: Run Oh My Zsh inst.sh
+      command: "{{homedir}}/.sources/omzsh_install.sh"
+      args:
+        creates: "{{homedir}}/.oh-my-zsh"
+      
+    - name: Install Gnome-tweaks
+      git:
+        repo: https://github.com/GNOME/gnome-tweaks
+        dest: "{{homedir}}/.sources"
+
+    - name: Fix ancient buy-in to shitty keyboard feature
+      command: "sh echo 'setxkbmap -option ctrl:nocaps' >> {{homedir}}/.profile"
+
