@@ -15,6 +15,7 @@
     - name: Install tools with apt
       apt:
         pkg:
+          - virtualenv
           - wireshark
           - python3.8-dev
           - build-essential
