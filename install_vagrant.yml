@@ -3,8 +3,8 @@
 # but all that's needed to change that should be changing the apt repo.
 
   - name: Deploy vagrant over vbox
-    hosts: all
-    become: <user>
+    hosts: localhost
+    become: coffee 
     tasks:
       name: Install virtual box
       tasks:
