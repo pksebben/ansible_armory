@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    homedir: /home/vagrant
+
+  tasks:
+    - name: Install Ubuntu toolkit
+      apt:
+        pkg:
+          - gnome-tweaks
+          - zsh
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: create sources directory if it doesn't exist
+      file:
+        path: "{{ homedir }}/.sources"
+        state: directory
+        mode: '0755'
+
+    - name: Retrieve Oh My Zsh
+      get_url:
+         url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+         dest: "{{ homedir }}/.sources/omzsh_install.sh"
+         mode: '0755'
+      register: testme
+
+    - name: Test testme register
+      debug:
+        msg: "{{ testme }}"
+
+    - name: Run Oh My Zsh inst.sh
+      command: "{{ homedir }}/.sources/omzsh_install.sh --unattended"
+      args:
+        creates: "{{ homedir }}/.oh-my-zsh"
+      when: testme
+ 

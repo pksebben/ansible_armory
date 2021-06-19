@@ -1,0 +1,41 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Echo host IP
+      debug:
+        msg: "{{ ansible_facts.eth1.ipv4.address }}"
+
+    - name: nmap host port 80
+      become: coffee
+      local_action: "shell nc -z {{ ansible_facts.eth1.ipv4.address }} 80"
+      register: http_result
+      ignore_errors: yes
+        
+    - name: is http open?
+      debug:
+        msg: "http is open"
+      when: not http_result.failed
+
+    - name: nmap host port 22
+      become: coffee
+      local_action: "shell nc -z {{ ansible_facts.eth1.ipv4.address }} 22"
+      register: ssh_result
+      ignore_errors: yes
+
+    - name: is ssh open?
+      debug:
+        msg: "ssh is open"
+      when: not ssh_result.failed
+
+      # TODO: Ensure ```nc``` is on the localhost prior to execution
+      # TODO: Find the correct interface to make this module usable and composable
+      # notes:  It seems that ```nc``` is the most efficient method of determining
+      # port openness in this context.  What we want is a module that can provide
+      # redundant fact-checking of open ports via a method that takes into account
+      # as many variables as possible (that is, closest to a live-fire exercise)
+      # What's needed going forward is more extensive sanity-checking (is nc installed on localhost?)
+      # as well as some method of making this module more configurable (perhaps a config
+      # file that defines which ports need to be open and some wiring to connect those
+      # truths to project internals).  What we have here is essentially just proof-of-concept.

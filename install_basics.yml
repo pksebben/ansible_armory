@@ -51,7 +51,7 @@
          mode: '0755'
 
     - name: Run Oh My Zsh inst.sh
-      command: "{{homedir}}/.sources/omzsh_install.sh"
+      command: "{{homedir}}/.sources/omzsh_install.sh --unattended"
       args:
         creates: "{{homedir}}/.oh-my-zsh"
       
