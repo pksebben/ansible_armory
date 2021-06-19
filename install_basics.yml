@@ -40,26 +40,26 @@
 
     - name: create sources directory if it doesn't exist
       file:
-        path: {{homedir}}/.sources
+        path: "{{ homedir }}/.sources"
         state: directory
         mode: '0755'
 
     - name: Retrieve Oh My Zsh
       get_url:
          url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-         dest: {{homedir}}/.sources/omzsh_install.sh
+         dest: "{{ homedir }}/.sources/omzsh_install.sh"
          mode: '0755'
 
     - name: Run Oh My Zsh inst.sh
-      command: "{{homedir}}/.sources/omzsh_install.sh --unattended"
+      command: "{{ homedir }}/.sources/omzsh_install.sh --unattended"
       args:
-        creates: "{{homedir}}/.oh-my-zsh"
+        creates: "{{ homedir }}/.oh-my-zsh"
       
     - name: Install Gnome-tweaks
       git:
         repo: https://github.com/GNOME/gnome-tweaks
-        dest: "{{homedir}}/.sources"
+        dest: "{{ homedir }}/.sources"
 
     - name: Fix ancient buy-in to shitty keyboard feature
-      command: "sh echo 'setxkbmap -option ctrl:nocaps' >> {{homedir}}/.profile"
+      command: "sh echo 'setxkbmap -option ctrl:nocaps' >> {{ homedir }}/.profile"
 
