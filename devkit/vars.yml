@@ -1,0 +1,3 @@
+---
+- user: "coffee"
+- config_repo: "git@github.com:pksebben/configurations"

@@ -1,0 +1,30 @@
+---
+- name: Pull Configs
+  block:
+    - name: Ensure .config exists
+      file:
+        state: directory
+        path: "~/.config"
+        owner: "{{ user }}"
+        mode: 0755
+    
+    - name: Pull configs from github
+      git:
+        repo: "{{ config_repo }}"
+        dest: "~/.config/configurations"
+
+    - name: Symlink .emacs
+      file:
+        state: link
+        src: "~/.config/configurations/.emacs"
+        dest: "~/.emacs"
+        owner: "{{ user }}"
+        force: yes
+
+    - name: Symlink .zshrc
+      file:
+        state: link
+        src: "~/.config/configurations/.zshrc"
+        dest: "~/.zshrc"
+        owner: "{{ user }}"
+        force: yes

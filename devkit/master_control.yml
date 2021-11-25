@@ -1,0 +1,16 @@
+---
+# This is the master controller for the dev kit series of scripts.
+- name: Master Control
+  hosts: all
+  become: yes
+  vars_files:
+    - ./vars.yml
+  tasks:
+    - name: master control testing comms channels to minion machines...
+      command: "/bin/echo foo"
+
+    - include: deploy_ssh_keys.yml
+
+    # - inlcude: create_directory_structure.yml
+
+    - include: pull_configs.yml

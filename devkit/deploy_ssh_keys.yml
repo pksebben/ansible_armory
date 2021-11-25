@@ -1,0 +1,15 @@
+---
+- name: Set up ssh
+  block:
+    - name: Deploy Key
+      ansible.posix.authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+    - name: Deploy private key
+      copy:
+        src: "~/.ssh/id_rsa"
+        dest: "~/.ssh/id_rsa"
+        owner: "{{ user }}"
+        mode: 0600

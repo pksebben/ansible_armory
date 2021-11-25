@@ -1,0 +1,7 @@
+---
+- name: Create code dir
+  file:
+    path: "~/code"
+    state: directory
+    mode: 0755
+    owner: "{{ user }}"
