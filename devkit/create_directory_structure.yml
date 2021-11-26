@@ -1,7 +1,23 @@
 ---
-- name: Create code dir
-  file:
-    path: "~/code"
-    state: directory
-    mode: 0755
-    owner: "{{ user }}"
+- name: Create Directories
+  block: 
+    - name: Create code dir
+      file:
+        path: "/home/{{ user }}/code"
+        state: directory
+        mode: 0755
+        owner: "{{ user }}"
+
+    - name: Create tools dir
+      file:
+        path: "/home/{{ user }}/tools"
+        state: directory
+        mode: 0755
+        owner: "{{ user }}"
+
+    - name: Create sources dir
+      file:
+        path: "/home/{{ user }}/.sources"
+        state: directory
+        mode: 0755
+        owner: "{{ user }}"

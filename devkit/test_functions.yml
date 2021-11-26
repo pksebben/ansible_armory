@@ -1,0 +1,6 @@
+---
+- name: Test environment is appropriate for full assimilation
+  block:
+    - name: Check variables
+      debug:
+        msg: "USER: {{ user }} REPO: {{ repo }}"

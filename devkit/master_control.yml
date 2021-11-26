@@ -9,8 +9,15 @@
     - name: master control testing comms channels to minion machines...
       command: "/bin/echo foo"
 
+    - include: test_functions.yml
+
     - include: deploy_ssh_keys.yml
 
-    # - inlcude: create_directory_structure.yml
+    - include: create_directory_structure.yml
 
     - include: pull_configs.yml
+
+    - include: pull_ansible_armory.yml
+
+    - include: install_tools.yml
+

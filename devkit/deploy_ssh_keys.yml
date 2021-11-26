@@ -5,11 +5,11 @@
       ansible.posix.authorized_key:
         user: "{{ user }}"
         state: present
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', '/home/{{ user }}/.ssh/id_rsa.pub') }}"
 
     - name: Deploy private key
       copy:
-        src: "~/.ssh/id_rsa"
-        dest: "~/.ssh/id_rsa"
+        src: "/home/{{ user }}/.ssh/id_rsa"
+        dest: "/home/{{ user }}/.ssh/id_rsa"
         owner: "{{ user }}"
         mode: 0600

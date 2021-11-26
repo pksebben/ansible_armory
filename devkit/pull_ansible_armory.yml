@@ -1,0 +1,7 @@
+---
+- name: Pull Ansible-Armory
+  block:
+    - name: Pull Ansible Armory
+      git:
+        repo: "{{ repo }}/ansible_armory"
+        dest: "/home/{{ user }}/tools/ansible_armory"

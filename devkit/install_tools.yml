@@ -1,0 +1,43 @@
+---
+- name: Install Tools
+  block:
+
+    - name: Install apt packages
+      apt:
+        pkg:
+          - python3-pip
+          - virtualenv
+          - wireshark
+          - python3.8-dev
+          - build-essential
+          - sqlite3
+          - tmux
+          - vim
+          - git
+          - python3
+          - zsh
+          - curl
+          - jq
+          - tree
+          - clang
+          - libssl-dev
+          - meson
+          - gnome-tweaks
+          - lld
+        update_cache: yes
+        state: present
+
+    - name: Retrieve Oh My Zsh
+      get_url:
+         url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+         dest: "/home/{{ user }}/.sources/omzsh_install.sh"
+         mode: '0755'
+         owner: "{{ user }}"
+
+    - name: Run Oh My Zsh inst.sh
+      command: "/home/{{ user }}/.sources/omzsh_install.sh --unattended"
+      become: yes
+      become_user: "{{ user }}"
+      args:
+        creates: "/home/{{ user }}/.oh-my-zsh"
+ 
