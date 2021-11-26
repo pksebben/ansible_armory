@@ -1,0 +1,3 @@
+---
+- user: <your username.  Must be the same on both devices>
+- repo: <your git.  Assuming you have configs and such in your git>
