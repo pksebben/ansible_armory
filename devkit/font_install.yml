@@ -27,6 +27,7 @@
         remote_src: yes
         src: "/home/{{ user }}/.sources/fonts/dm-mono/exports/{{ item }}"
         dest: "/home/{{ user }}/.local/share/fonts/{{ item }}"
+        owner: "{{ user }}"
       loop:
         - DMMono-Light.ttf
         - DMMono-Regular.ttf
