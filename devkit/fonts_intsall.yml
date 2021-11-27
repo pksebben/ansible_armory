@@ -1,0 +1,25 @@
+---
+- name: Install fonts
+  block:
+    - name: Ensure fonts file exists
+      file:
+        state: directory
+        mode: 0755
+        owner: "{{ user }}"
+        path: "/home/{{ user }}/.sources/fonts"
+
+    - name: DM-Mono  grab from git
+      git:
+        repo: "git@github.com:googlefonts/dm-mono"
+        dest: "/home/{{ user }}/.sources/fonts/dm-mono"
+
+    - name: DM-Mono  Install fonts -> loop
+      copy:
+        remote_src: yes
+        src: "/home/{{ user }}/.sources/fonts/dm-mono/exports/{{ item }}"
+        owner: "{{ user }}"
+      loop:
+        - DMMono-Light.ttf
+        - DMMono-Regular.ttf
+        - DMMono-Medium.ttf
+    

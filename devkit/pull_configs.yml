@@ -13,6 +13,9 @@
       git:
         repo: "{{ repo }}/configurations"
         dest: "/home/{{ user }}/.config/configurations"
+        accept_hostkey: yes
+        key_file: "/home/{{ user }}/.ssh/id_rsa"
+
 
     - name: Symlink .emacs
       file:
@@ -28,6 +31,7 @@
         src: "/home/{{ user }}/.config/configurations/.zshrc"
         dest: "/home/{{ user }}/.zshrc"
         owner: "{{ user }}"
+        force: yes
 
     - name: Set up cron for configs on reboot
       cron:

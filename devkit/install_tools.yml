@@ -7,6 +7,8 @@
         pkg:
           - python3-pip
           - virtualenv
+          - ansible
+          - emacs
           - wireshark
           - python3.8-dev
           - build-essential
@@ -40,4 +42,11 @@
       become_user: "{{ user }}"
       args:
         creates: "/home/{{ user }}/.oh-my-zsh"
+
+    - name: Install Ansible
+      become: yes
+      become_user: "{{ user }}"
+      pip:
+        name: ansible
  
+        

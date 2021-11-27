@@ -2,6 +2,13 @@
 
 This is a series of scripts to set up a dev machine, in the way that I want my dev machine to look.  
 
+# Preparation
+
+Most of these scripts need no assistance, save for setting variables in vars.yml correctly.  However, there are a couple of steps to prepare before you connect and configure using ansible:
+
+ - install openssh server on the remote
+   `sudo apt install openssh-server -y`
+
 # Configuration
 
 ## Variables

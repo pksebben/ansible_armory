@@ -1,0 +1,7 @@
+---
+- name: improvements to .profile
+  block:
+    - name: Fix shitty caps key
+      lineinfile:
+        path: "/home/{{ user }}/.profile"
+        line: "setxkbmap -option ctrl:nocaps"

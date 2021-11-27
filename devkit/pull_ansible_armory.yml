@@ -5,3 +5,10 @@
       git:
         repo: "{{ repo }}/ansible_armory"
         dest: "/home/{{ user }}/tools/ansible_armory"
+        accept_hostkey: yes
+        key_file: "/home/{{ user }}/.ssh/id_rsa"
+
+- name: install ansible posix
+  command: "ansible-galaxy collection install ansible.posix"
+  become: yes
+  become_user: "{{ user }}"
