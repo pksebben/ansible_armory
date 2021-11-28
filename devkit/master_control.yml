@@ -10,13 +10,13 @@
     - include: test_functions.yml
 
     # Done
-    - include: modify_profile.yml
-
-    # Done
     - include: create_directory_structure.yml
 
     # Seems done
     - include: install_tools.yml
+      
+    # Done
+    - include: modify_profile.yml
       
     # Seems done
     - include: deploy_ssh_keys.yml
