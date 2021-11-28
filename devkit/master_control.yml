@@ -16,14 +16,20 @@
     - include: install_tools.yml
       
     - include: deploy_ssh_keys.yml
+    # - include: test_functions.yml
 
-    - include: create_directory_structure.yml
+    # - include: deploy_ssh_keys.yml
 
-    - include: pull_configs.yml
+    # - include: create_directory_structure.yml
+
+    # - include: pull_configs.yml
 
     - include: font_install.yml
 
     - include: pull_ansible_armory.yml
 
+    # - include: pull_ansible_armory.yml
 
+    # - include: install_tools.yml
 
+    - include: get_fonts.yml
