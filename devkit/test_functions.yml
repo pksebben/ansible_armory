@@ -1,6 +1,9 @@
 ---
 - name: Test environment is appropriate for full assimilation
   block:
+    - name: master control testing comms channels to minion machines...
+      command: "/bin/echo foo"
+
     - name: Check variables
       debug:
         msg: "USER: {{ user }} REPO: {{ repo }}"

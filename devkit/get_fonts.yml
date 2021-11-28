@@ -12,6 +12,8 @@
       git:
         repo: "git@github.com:googlefonts/dm-mono"
         dest: "/home/{{ user }}/.sources/fonts/dm-mono"
+      become: yes
+      become_user: "{{ user }}"
 
     - name: Install DM-Mono -> loop
       copy:

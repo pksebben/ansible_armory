@@ -6,30 +6,29 @@
   vars_files:
     - ./vars.yml
   tasks:
-    - name: master control testing comms channels to minion machines...
-      command: "/bin/echo foo"
-
-    - include: modify_profile.yml
-      
+    # Done
     - include: test_functions.yml
 
+    # Done
+    - include: modify_profile.yml
+
+    # Done
+    - include: create_directory_structure.yml
+
+    # Seems done
     - include: install_tools.yml
       
+    # Seems done
     - include: deploy_ssh_keys.yml
-    # - include: test_functions.yml
 
-    # - include: deploy_ssh_keys.yml
+    # Seems done 
+    - include: pull_configs.yml
 
-    # - include: create_directory_structure.yml
-
-    # - include: pull_configs.yml
-
+    # Seems done
     - include: font_install.yml
 
+    # Seems done
     - include: pull_ansible_armory.yml
 
-    # - include: pull_ansible_armory.yml
 
-    # - include: install_tools.yml
 
-    - include: get_fonts.yml

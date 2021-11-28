@@ -5,6 +5,7 @@
     - name: Install apt packages
       apt:
         pkg:
+          - ansible
           - python3-pip
           - virtualenv
           - ansible
@@ -26,6 +27,7 @@
           - meson
           - gnome-tweaks
           - lld
+          - zip
         update_cache: yes
         state: present
 

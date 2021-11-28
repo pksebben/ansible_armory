@@ -15,6 +15,8 @@
         dest: "/home/{{ user }}/.config/configurations"
         accept_hostkey: yes
         key_file: "/home/{{ user }}/.ssh/id_rsa"
+      become: yes
+      become_user: "{{ user }}"
 
 
     - name: Symlink .emacs
@@ -47,15 +49,3 @@
         hour: "3"
         minute: "0"
         user: "{{ user }}"
-
-
-    # - name: Set up cron job for configurations
-    #   cron:
-    #     name: "push configurations"
-    #     job: "/home/{{ user }}/.config/configurations/cronpush.sh"
-    #     special_time: reboot
-    #     hour: "3"
-    #     minute: "0"
-    #     weekday: "*"
-    #     month: "*"
-    #     user: "{{ user }}"
