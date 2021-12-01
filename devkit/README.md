@@ -6,8 +6,17 @@ This is a series of scripts to set up a dev machine, in the way that I want my d
 
 Most of these scripts need no assistance, save for setting variables in vars.yml correctly.  However, there are a couple of steps to prepare before you connect and configure using ansible:
 
- - install openssh server on the remote
-   `sudo apt install openssh-server -y`
+ - set up a password on the new machine
+ - ensure it's on the local network
+ - install openssh server and sshpass on the remote
+   `sudo apt install openssh-server sshpass -y`
+ - ssh into the machine once to add to known_hosts
+ - put the target's IP "from ifconfig" in /targets
+ - see "Usage"
+   
+# Usage
+
+After installing the OS you want on the new machine and completing the steps in the "Preparation" step above, point this script at it's IP (from ifconfig) and execute the "first install" command (that asks for sudo and ssh password).  WARNING: this sets up passwordless sudo with a file called "ansible_nopaswd_sudo" in /etc/sudoers.d.  Make sure to delete this as it's hella insecure.
 
 # Configuration
 

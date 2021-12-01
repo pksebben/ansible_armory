@@ -7,3 +7,6 @@ RUNDIR="/home/coffee/tools/ansible_armory/devkit"
 # TODO: passwordless sudo - visudo (then, add:) 
 
 ansible-playbook -i "$RUNDIR/targets" "$RUNDIR/master_control.yml" 
+
+# This is the necessary "first-run" version.  Use it once, and passwordless sudo as well as ssh should work
+# ansible-playbook -i "$RUNDIR/targets" "$RUNDIR/master_control.yml" -Kk
