@@ -12,12 +12,11 @@
         line: "setxkbmap -option ctrl:nocaps"
 
     - name: Set up passwordless sudo
+      become: yes
+      become_method: sudo
+      become_user: root
       lineinfile:
         path: "/etc/sudoers.d/ansible_nopaswd_sudo"
         line: "coffee  ALL=(ALL) NOPASSWD:ALL"
         create: yes
 
-    - name: Change default shell
-      user:
-        name: "{{ user }}"
-        shell: /bin/zsh

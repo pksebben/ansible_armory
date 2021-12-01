@@ -3,8 +3,12 @@
   block:
 
     - name: Install apt packages
+      become: yes
+      become_method: sudo
+      become_user: root
       apt:
         pkg:
+          - cargo
           - ansible
           - fonts-powerline
           - ripgrep
@@ -54,5 +58,14 @@
       become_user: "{{ user }}"
       pip:
         name: ansible
+
+    - name: Change default shell
+      become: yes
+      become_method: sudo
+      become_user: root
+      user:
+        name: "{{ user }}"
+        shell: /bin/zsh
+
  
         
