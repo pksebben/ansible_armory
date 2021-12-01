@@ -45,3 +45,19 @@ Pull configurations from github and symlink accordingly
 
 Debugging minion who lets you know if your vars etc are fucked up.
 
+# TODO
+[X] apt install fonts-powerline
+[X] apt add
+ - fonts-powerline
+ - ripgrep
+ - vagrant
+ - virtualbox
+[ ] fix "set default shell"
+[X] maybe: fix install git?
+[X] emacs cannot read from git.  Why?
+[X] Ownership is still shitty. - I think this was a become_user issue.  Might be fixed now.
+  .sources
+  .emacs belongs to root
+  tools belongs to root
+  .zshrc belongs to root
+[ ] Install google chrome like so: https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
