@@ -67,5 +67,17 @@
         name: "{{ user }}"
         shell: /bin/zsh
 
+    # untested
+    - name: Get Rust installer
+      get_url:
+        url: https://sh.rustup.rs 
+        dest: "/home/{{ user }}/.sources/rustup.sh"
+        mode: 0755
+
+    # untested
+    - name: Install Rust
+      command: "/home/{{ user }}/.sources/rustup.sh"
+      
+
  
         
