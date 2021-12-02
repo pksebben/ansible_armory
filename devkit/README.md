@@ -69,4 +69,4 @@ Debugging minion who lets you know if your vars etc are fucked up.
   .emacs belongs to root
   tools belongs to root
   .zshrc belongs to root
-[ ] Install google chrome like so: https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
+[/] Install google chrome like so: https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line

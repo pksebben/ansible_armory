@@ -8,6 +8,10 @@
       become_user: root
       apt:
         pkg:
+          - install
+          - libxss1
+          - libappindicator1
+          - libindicator7
           - cargo
           - ansible
           - fonts-powerline
@@ -77,6 +81,15 @@
     # untested
     - name: Install Rust
       command: "/home/{{ user }}/.sources/rustup.sh"
+
+    # untested
+    - name: Install Chrome
+      become: yes
+      become_method: sudo
+      become_user: root
+      apt:
+        deb: "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+
       
 
  
