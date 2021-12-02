@@ -63,10 +63,9 @@
       pip:
         name: ansible
 
+    # TODO: Broken needs testing
     - name: Change default shell
       become: yes
-      become_method: sudo
-      become_user: root
       user:
         name: "{{ user }}"
         shell: /bin/zsh

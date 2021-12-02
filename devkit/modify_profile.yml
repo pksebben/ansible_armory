@@ -20,3 +20,4 @@
         line: "coffee  ALL=(ALL) NOPASSWD:ALL"
         create: yes
 
+
