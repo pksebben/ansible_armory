@@ -1,0 +1,27 @@
+---
+- name: Install Vagrant and VirtualBox
+  block:
+
+    - name: Add Vagrant gpg key
+      apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+
+    - name: Check ansible_distribution is outputting correctly (for latest Mint, should be "uma")
+      debug: msg="ansible_distribution says - {{ ansible_distribution }}"
+
+    - name: Add Vagrant apt-repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution }} main" # this may need tweaking; it's possible it belongs in 
+        
+    - name: Install Vagrant
+      apt:
+        update_cache: yes
+        pkg:
+          - vagrant
+
+    - name: Install Virtualbox
+      apt:
+        update_cache: yes
+        pkg:
+          - virtualbox

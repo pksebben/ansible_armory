@@ -31,5 +31,8 @@
     # Seems done
     - include: pull_ansible_armory.yml
 
+    # TODO: testme
+    - include: install_vagrant_virtualbox.yml
+
 
 
