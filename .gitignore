@@ -1,3 +1,4 @@
 devlog.md
 test.yml
-vars.yml
+*vars.yml
+*targets
