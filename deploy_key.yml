@@ -1,0 +1,20 @@
+- name: Deploy ssh key to authorized_keys
+  become: yes
+  collections: ['ansible.posix']
+  hosts: all
+  vars:
+    user: <target_user>
+    homedir: /home/<target_user>
+    keydir: <keydir>
+  tasks:
+
+- block:
+    - name: create ssh keys
+      community.crypto.openssh_keypair:
+        path: ~/.ssh/{{ }}
+
+    - name: deploy key
+      ansible.posix.authorized_key:
+        user: "{{ user }}" 
+        state: present
+        key: "{{ lookup('file', '{{ keydir }}/id_rsa.pub') }}"

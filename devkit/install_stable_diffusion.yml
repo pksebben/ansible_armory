@@ -1,0 +1,7 @@
+---
+- name: ensure prereqs
+  apt:
+    pkg:
+      - git
+      - zsh
+      -
