@@ -2,34 +2,10 @@
 # This is the master controller for the dev kit series of scripts.
 - name: Master Control
   hosts: espresso
+  force_handlers: true
   become: yes
   become_user: "{{ user }}"
   vars_files:
     - ./vars.yml
-  tasks:
-    # Done
-    - include: test_functions.yml
-
-    # Seems done
-    - include: deploy_ssh_keys.yml
-
-    # Done
-    - include: modify_profile.yml
-
-    # Done
-    - include: create_directory_structure.yml
-
-    # Seems done
-    - include: install_tools.yml
-
-    # Seems done
-    - include: pull_configs.yml
-
-    # Seems done
-    - include: font_install.yml
-
-    # Seems done
-    - include: pull_ansible_armory.yml
-
-    # TODO: testme
-    - include: install_vagrant_vbox.yml
+  roles:
+    - base
