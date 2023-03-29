@@ -1,0 +1,28 @@
+---
+- name: enable SSH forwarding for sudo
+  become_user: root
+  ansible.builtin.lineinfile:
+    dest: /etc/sudoers
+    insertafter: '^#?\s*Defaults\s+env_keep\b'
+    line: 'Defaults    env_keep += "SSH_AUTH_SOCK"'
+
+- name: Establish agent forwarding locally
+  become: false
+  delegate_to: localhost
+  ansible.builtin.blockinfile:
+    path: "~/.ssh/config"
+    marker: "#    <!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    block: |
+        Host {{ ansible_default_ipv4.address }}
+        ForwardAgent yes
+  notify: "ssh_forward : kill_local_forward"
+
+- name: Establish agent forwarding on remote
+  ansible.builtin.blockinfile:
+    path: "~/.ssh/config"
+    marker: "#    <!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    create: true
+    block: |
+        Host *
+        ForwardAgent yes
+  notify: "ssh_forward : kill_remote_forward"

@@ -8,7 +8,7 @@
     - name: Pull Ansible Armory
       become_user: "{{ user }}"
       git:
-        repo: "{{ user_github_account }}/ansible_armory"
+        repo: "git@github.com:pksebben/ansible_armory"
         dest: "/home/{{ user }}/tools/ansible_armory"
         accept_hostkey: yes
 

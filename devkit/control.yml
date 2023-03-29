@@ -1,7 +1,7 @@
 ---
 # This is the master controller for the dev kit series of scripts.
 - name: Master Control
-  hosts: espresso
+  hosts: devbox
   force_handlers: true
   become: yes
   become_user: "{{ user }}"
