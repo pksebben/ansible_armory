@@ -1,0 +1,45 @@
+---
+- name: Secure logins
+  block:
+    - name: Install security basics
+      ansible.builtin.apt:
+        pkg:
+          - swatch
+          - openssh-server
+          - ssmtp
+
+    - name: Log remote access
+      ansible.builtin.lineinfile:
+        line: "LogLevel VERBOSE"
+        regexp: "^%LogLevel"
+        path: "/etc/ssh/sshd_config"
+        create: true
+
+    - name: Restart sshd
+      ansible.builtin.systemd:
+        name: sshd
+        daemon_reload: true
+        state: restarted
+        enabled: true
+
+    - name: Copy swatch config
+      ansible.builtin.copy:
+        src: "swatchrc"
+        dest: "~/.swatchrc"
+
+    - name: Copy ssmtp config
+      ansible.builtin.copy:
+        dest: /etc/ssmtp/ssmtp.conf
+        src: ssmtp.conf
+
+    - name: Copy swatch service file
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/swatch.service
+        src: swatch.service
+
+    - name: Enable swatch service
+      ansible.builtin.systemd:
+        name: swatch
+        daemon_reload: true
+        state: restarted
+        enabled: true

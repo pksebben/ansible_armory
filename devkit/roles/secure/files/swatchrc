@@ -1,0 +1,3 @@
+watchfor /Accepted publickey for|Accepted password for|Failed password for|Failed publickey for/
+    echo
+    exec echo "Remote login attempt detected: $_" | mail -s "Remote Login Attempt" benmorsillo@example.com
