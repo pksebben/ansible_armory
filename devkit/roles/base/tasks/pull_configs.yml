@@ -8,16 +8,14 @@
         owner: "{{ user }}"
         group: "{{ user }}"
         mode: 0755
-    
+
     - name: Pull configs from github
-      git:
-        repo: "{{ repo }}/configurations"
-        dest: "/home/{{ user }}/.config/configurations"
-        accept_hostkey: yes
-        key_file: "/home/{{ user }}/.ssh/id_rsa"
       become: yes
       become_user: "{{ user }}"
-
+      git:
+        repo: "{{ user_github_account }}/configurations"
+        dest: "/home/{{ user }}/.config/configurations"
+        accept_hostkey: yes
 
     - name: Symlink .emacs
       file:

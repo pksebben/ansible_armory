@@ -15,12 +15,16 @@
         owner: "{{ user }}"
         path: "/home/{{ user }}/.local/share/fonts"
 
+    - name: SSH forward for fonts
+      include_role:
+        name: ssh_forward
+
     - name: DM-Mono  grab from git
+      become_user: "{{ user }}"
       git:
         repo: "git@github.com:googlefonts/dm-mono"
         dest: "/home/{{ user }}/.sources/fonts/dm-mono"
         accept_hostkey: yes
-        key_file: "/home/{{ user }}/.ssh/id_rsa"
 
     - name: DM-Mono  Install fonts -> loop
       copy:
