@@ -1,0 +1,23 @@
+---
+- name: improvements to .profile
+  block:
+    - name: Fix shitty caps key
+      lineinfile:
+        path: "/home/{{ user }}/.profile"
+        line: "setxkbmap -option ctrl:nocaps"
+
+    - name: Fix shitty caps key
+      lineinfile:
+        path: "/home/{{ user }}/.bashrc"
+        line: "setxkbmap -option ctrl:nocaps"
+
+    - name: Set up passwordless sudo
+      become: yes
+      become_method: sudo
+      become_user: root
+      lineinfile:
+        path: "/etc/sudoers.d/ansible_nopaswd_sudo"
+        line: "coffee  ALL=(ALL) NOPASSWD:ALL"
+        create: yes
+
+

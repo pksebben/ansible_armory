@@ -1,0 +1,26 @@
+---
+- name: Pull Ansible-Armory
+  block:
+    - name: SSH forward
+      include_role:
+        name: ssh_forward
+
+    - name: Pull Ansible Armory
+      become_user: "{{ user }}"
+      git:
+        repo: "{{ user_github_account }}/ansible_armory"
+        dest: "/home/{{ user }}/tools/ansible_armory"
+        accept_hostkey: yes
+
+    - fail:
+        msg: "test"
+
+- name: install ansible posix
+  command: "ansible-galaxy collection install ansible.posix"
+  become: yes
+  become_user: "{{ user }}"
+
+- name: install ansible posix
+  command: "ansible-galaxy install weareinteractive.ssh_agent_forward"
+  become: yes
+  become_user: "{{ user }}"
