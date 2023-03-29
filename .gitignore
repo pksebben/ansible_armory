@@ -2,3 +2,4 @@ devlog.md
 test.yml
 *vars.yml
 *targets
+.DS_Store
