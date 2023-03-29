@@ -1,0 +1,16 @@
+---
+- name: kill_local_forward
+  become: false
+  delegate_to: localhost
+  ansible.builtin.blockinfile:
+    path: "~/.ssh/config"
+    marker: "#    <!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    block: ""
+  listen: "Establish agent forwarding locally"
+
+- name: kill_remote_forward
+  ansible.builtin.blockinfile:
+    path: "~/.ssh/config"
+    marker: "#    <!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    block: ""
+  listen: "Establish agent forwarding on remote"
