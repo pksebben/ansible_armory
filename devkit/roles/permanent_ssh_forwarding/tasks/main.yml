@@ -15,7 +15,6 @@
     block: |
         Host {{ ansible_default_ipv4.address }}
         ForwardAgent yes
-  notify: "ssh_forward : kill_local_forward"
 
 - name: Establish agent forwarding on remote
   ansible.builtin.blockinfile:
@@ -25,4 +24,3 @@
     block: |
         Host *
         ForwardAgent yes
-  notify: "ssh_forward : kill_remote_forward"

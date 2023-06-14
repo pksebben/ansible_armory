@@ -1,0 +1,11 @@
+---
+# This is the master controller for the dev kit series of scripts.
+- name: Master Control
+  hosts: devbox
+  force_handlers: true
+  become: yes
+  become_user: "{{ user }}"
+  vars_files:
+    - ./vars.yml
+  roles:
+    - permanent_ssh_forwarding
