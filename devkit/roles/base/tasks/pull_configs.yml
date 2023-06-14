@@ -33,6 +33,17 @@
         owner: "{{ user }}"
         force: yes
 
+    - name: Get p10k
+      git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "/home/{{ user }}/.sources/p10k"
+
+    - name: Ensure p10k correct in zshrc
+      ansible.builtin.lineinfile:
+        path: "~/.config/configurations/{{ distro }}/zshrc"
+        line: "source ~/p10k/powerlevel10k.zsh-theme"
+        # TODO: fix configs to use distro like ansible calls it
+
     - name: Set up cron for configs on reboot
       cron:
         name: "push config"
