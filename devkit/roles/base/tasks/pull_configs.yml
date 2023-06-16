@@ -40,7 +40,7 @@
 
     - name: Fix p10k ref in zshrc
       ansible.builtin.lineinfile:
-        path: "~/.config/configurations/.zshrc"
+        path: "~/.config/configurations/zshrc"
         line: "source ~/p10k/powerlevel10k.zsh-theme"
         # TODO: fix configs to use distro like ansible calls it
 
