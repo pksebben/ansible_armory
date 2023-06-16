@@ -25,24 +25,15 @@
         owner: "{{ user }}"
         force: yes
 
+
+
     - name: Symlink .zshrc
       file:
         state: link
-        src: "/home/{{ user }}/.config/configurations/.zshrc"
+        src: "/home/{{ user }}/.config/configurations/{{ ansible_distribution }}/zshrc"
         dest: "/home/{{ user }}/.zshrc"
         owner: "{{ user }}"
         force: yes
-
-    - name: Get p10k
-      git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: "/home/{{ user }}/.sources/p10k"
-
-    - name: Fix p10k ref in zshrc
-      ansible.builtin.lineinfile:
-        path: "~/.config/configurations/zshrc"
-        line: "source ~/p10k/powerlevel10k.zsh-theme"
-        # TODO: fix configs to use distro like ansible calls it
 
     - name: Set up cron for configs on reboot
       cron:
