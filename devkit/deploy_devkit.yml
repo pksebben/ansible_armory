@@ -1,0 +1,11 @@
+---
+- name: Install dev kit
+  hosts: chai
+  force_handlers: true
+  become: yes
+  become_user: chai
+  vars:
+    user_github_account: "git@github.com:pksebben"
+    user: chai
+  roles:
+    - base
