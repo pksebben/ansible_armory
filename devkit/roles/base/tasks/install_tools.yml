@@ -3,46 +3,47 @@
   block:
 
     - name: Install apt packages
-      become: yes
+      become: true
       become_method: sudo
       become_user: root
-      apt:
-        pkg:
-          - libxss1
-          - libappindicator1
-          - libindicator7
-          - cargo
-          - ansible
-          - fonts-powerline
-          - ripgrep
-          - vagrant
-          - virtualbox
-          - python3-pip
-          - virtualenv
-          - ansible
-          - emacs
-          - wireshark
-          - python3
-          - build-essential
-          - sqlite3
-          - tmux
-          - vim
-          - git
-          - python3
-          - zsh
-          - curl
-          - jq
-          - tree
-          - clang
-          - libssl-dev
-          - meson
-          - gnome-tweaks
-          - lld
-          - zip
-        update_cache: yes
-        state: present
+      ansible.builtin.apt:
+        pkg: "{{ item }}"
+      loop:
+        - zsh
+        - cargo
+        - libxss1
+        - libappindicator1
+        - libindicator7
+        - ansible
+        - fonts-powerline
+        - ripgrep
+        - vagrant
+        - virtualbox
+        - python3-pip
+        - virtualenv
+        - ansible
+        - emacs
+        - wireshark
+        - python3
+        - build-essential
+        - sqlite3
+        - tmux
+        - vim
+        - git
+        - python3
+        - zsh
+        - curl
+        - jq
+        - tree
+        - clang
+        - libssl-dev
+        - meson
+        - gnome-tweaks
+        - lld
+        - zip
 
     - name: Install pyenv
+      ignore_errors: true
       shell:
         cmd: "curl https://pyenv.run | bash"
 
