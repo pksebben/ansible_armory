@@ -16,16 +16,15 @@
         repo: "{{ user_github_account }}/configurations"
         dest: "/home/{{ user }}/.config/configurations"
         accept_hostkey: yes
+        force: true
 
     - name: Symlink .emacs
       file:
         state: link
-        src: "/home/{{ user }}/.config/configurations/.emacs"
+        src: "/home/{{ user }}/.config/configurations/{{ ansible_distribution }}/emacs"
         dest: "/home/{{ user }}/.emacs"
         owner: "{{ user }}"
         force: yes
-
-
 
     - name: Symlink .zshrc
       file:
