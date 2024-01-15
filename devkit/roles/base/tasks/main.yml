@@ -2,7 +2,6 @@
 - name: Install base stuffs
   block:
     # - ansible.builtin.import_tasks: create_directory_structure.yml
-    # - ansible.builtin.import_tasks: install_tools.yml
     # - ansible.builtin.import_tasks: pull_ansible_armory.yml
     # - ansible.builtin.import_tasks: font_install.yml
     - ansible.builtin.import_tasks: modify_profile.yml
