@@ -1,0 +1,22 @@
+[user]
+        email = benmorsillo@gmail.com
+        name = pksebben
+[url "https://"]
+        insteadOf = git://
+[init]
+        defaultBranch = main
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+[diff]
+        tool = ediff
+[difftool "ediff"]
+        cmd = emacs -nw --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[pull]
+        rebase = merges
+[push]
+        autoSetupRemote = true
+[core]
+        excludesfile = /Users/{{ user }}/.gitignore

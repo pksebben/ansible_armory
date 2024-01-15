@@ -1,0 +1,5 @@
+---
+- name: configure git
+  ansible.builtin.template:
+    src: gitconfig.j2
+    dest: "/home/{{ user }}/.gitconfig"
