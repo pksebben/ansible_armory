@@ -17,8 +17,6 @@
         - ansible
         - fonts-powerline
         - ripgrep
-        - vagrant
-        - virtualbox
         - python3-pip
         - virtualenv
         - ansible
