@@ -66,6 +66,10 @@
       args:
         creates: "/home/{{ user }}/.oh-my-zsh"
 
+    - name: Install p10k theme
+      ansible.builtin.shell:
+        cmd: "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
     - name: Install Ansible
       become: yes
       become_user: "{{ user }}"
