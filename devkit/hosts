@@ -3,3 +3,6 @@
 
 [chai]
 10.0.0.150 ansible_user=chai ansible_connection=ssh
+
+[mlbot]
+10.0.0.157 ansible_user=mlbot ansible_connection=ssh
