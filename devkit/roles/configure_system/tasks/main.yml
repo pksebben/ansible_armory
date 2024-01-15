@@ -17,7 +17,5 @@
       become_user: root
       lineinfile:
         path: "/etc/sudoers.d/ansible_nopaswd_sudo"
-        line: "coffee  ALL=(ALL) NOPASSWD:ALL"
+        line: "{{ user }}  ALL=(ALL) NOPASSWD:ALL"
         create: yes
-
-

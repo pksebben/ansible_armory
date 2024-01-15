@@ -8,5 +8,7 @@
   vars_files:
     - ./vars.yml
   roles:
+    - configure_system
     - basic_tooling
-    - configurations
+    - configuration_files
+    # - comfyui
