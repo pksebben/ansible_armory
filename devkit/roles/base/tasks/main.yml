@@ -6,4 +6,3 @@
     # - ansible.builtin.import_tasks: pull_ansible_armory.yml
     # - ansible.builtin.import_tasks: font_install.yml
     - ansible.builtin.import_tasks: modify_profile.yml
-    - ansible.builtin.import_tasks: pull_configs.yml
