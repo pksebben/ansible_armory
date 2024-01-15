@@ -45,6 +45,13 @@
       shell:
         cmd: "curl https://pyenv.run | bash"
 
+    - name: Ensure sources dir
+      ansible.builtin.file:
+        path: "/home/{{ user }}/.sources"
+        state: directory
+        owner: "{{ user }}"
+        group: "{{ user }}"
+
     - name: Retrieve Oh My Zsh
       get_url:
          url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
